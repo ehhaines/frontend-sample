@@ -1,0 +1,30 @@
+[
+  {
+    "firstName": "Adrien",
+    "lastName": "Olczak",
+    "phone": "415-310-1619",
+    "email": "adrien@instawork.com",
+    "isAdmin": true
+  },
+  {
+    "firstName": "Charlene",
+    "lastName": "Pham",
+    "phone": "415-310-1619",
+    "email": "charlene@instawork.com",
+    "isAdmin": false
+  },
+  {
+    "firstName": "Benson",
+    "lastName": "Mach",
+    "phone": "415-310-1619",
+    "email": "benson@instawork.com",
+    "isAdmin": false
+  },
+  {
+    "firstName": "Dan",
+    "lastName": "Petrie",
+    "phone": "415-310-1619",
+    "email": "dan@instawork.com",
+    "isAdmin": false
+  }
+]

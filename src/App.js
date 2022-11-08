@@ -1,7 +1,9 @@
+import ListComponent from "./List";
+
 function App() {
   return (
-    <div className="App container">
-      <h1>Hello World!</h1>
+    <div className="App container mt-2">
+      <ListComponent/>
     </div>
   );
 }
