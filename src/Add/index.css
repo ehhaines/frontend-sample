@@ -1,0 +1,16 @@
+.eh-border-bottom-2 {
+  border-bottom: solid rgba(0, 0, 0, 0.125) 1.5px;
+}
+
+.eh-radio-option {
+  color: #bfc1c2;
+}
+
+.eh-button {
+  width: 33%;
+  height: 50px;
+}
+
+input[type="radio"]:checked+label {
+  color: rgb(48, 48, 48);
+}
