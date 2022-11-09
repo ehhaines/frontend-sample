@@ -14,7 +14,10 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <div className="App container mt-2">
+        <div className="App container mt-2" style={{display: "flex",
+        flexFlow: "row nowrap",
+        justifyContent: "center",
+        alignItems: "center",}}>
           <Routes>
             <Route index element={<ListComponent/>}/>
             <Route path="/add" element={<AddComponent/>}/>
