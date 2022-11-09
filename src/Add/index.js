@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
+import { addMember } from "../reducers/member-reducer";
 
 const AddComponent = () => {
+
+  let [fName, setFirstName] = useState("");
+  let [lName, setLastName] = useState("");
+  let [phoneNo, setPhoneNo] = useState("");
+  let [email, setEmail] = useState("");
+  let [admin, setAdmin] = useState(false);
+
+  const dispatch = useDispatch();
+  const addNewMember = () => {
+    let newMember = {
+      firstName: fName,
+      lastName: lName,
+      phone: phoneNo,
+      email: email,
+      isAdmin: admin
+    }
+    dispatch(addMember(newMember));
+  }
+
   const nav = useNavigate();
   return(
     <div className="eh-list-component">
@@ -19,24 +40,35 @@ const AddComponent = () => {
       </div>
       <div className="mt-3">
         <div className="fs-4 fw-semibold mb-1">Info</div>
-        <div className="my-3 input-group input-group-lg"><input className="form-control w-100" placeholder="First Name"/></div>
-        <div className="my-3 input-group input-group-lg"><input className="form-control w-100" placeholder="Last Name"/></div>
-        <div className="my-3 input-group input-group-lg"><input className="form-control w-100" placeholder="Phone Number"/></div>
-        <div className="my-3 input-group input-group-lg"><input className="form-control w-100" placeholder="Email"/></div>
+        <div className="my-3 input-group input-group-lg">
+          <input className="form-control w-100" placeholder="First Name" onChange={e => setFirstName(e.target.value)}/>
+        </div>
+        <div className="my-3 input-group input-group-lg">
+          <input className="form-control w-100" placeholder="Last Name" onChange={e => setLastName(e.target.value)}/>
+        </div>
+        <div className="my-3 input-group input-group-lg">
+          <input className="form-control w-100" placeholder="Phone Number" onChange={e => setPhoneNo(e.target.value)}/>
+        </div>
+        <div className="my-3 input-group input-group-lg">
+          <input className="form-control w-100" placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+        </div>
       </div>
       <div className="mb-2">
         <div className="fs-4 fw-semibold">Role</div>
         <div className="eh-border-bottom-2">
-          <input className="form-check-input float-end my-3" type="radio" name="radioRole" id="radioRegular" value="" aria-label="..." defaultChecked/>
-          <label className="form-check-label fw-semibold py-3 eh-radio-option" for="radioRegular">Regular - can't delete members</label>
+          <input className="form-check-input float-end my-3" type="radio" name="radioRole" id="radioRegular" value="" aria-label="..." onClick={() => setAdmin(false)} defaultChecked/>
+          <label className="form-check-label fw-semibold py-3 eh-radio-option" htmlFor="radioRegular">Regular - can't delete members</label>
         </div>
         <div className="eh-border-bottom-2">
-          <input className="form-check-input float-end my-3" type="radio" name="radioRole" id="radioAdmin" value="" aria-label="..."/>
-          <label className="form-check-label fw-semibold py-3 eh-radio-option" for="radioAdmin">Admin - can delete members</label>
+          <input className="form-check-input float-end my-3" type="radio" name="radioRole" id="radioAdmin" value="" aria-label="..." onClick={() => setAdmin(true)}/>
+          <label className="form-check-label fw-semibold py-3 eh-radio-option" htmlFor="radioAdmin">Admin - can delete members</label>
         </div>
       </div>
       <div>
-        <button className="btn btn-primary my-4 eh-button float-end" onClick={() => {nav(`/`)}}>
+        <button className="btn btn-primary my-4 eh-button float-end" onClick={() => {
+          nav(`/`);
+          addNewMember();
+          }}>
           Save
         </button>
       </div>

@@ -1,13 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 import Member from "./member";
-import members from "./members.json";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const ListComponent = () => {
+
+  const members = useSelector(state => state.member);
   const nav = useNavigate();
+
   return(
     <div className="eh-list-component">
       <div className="eh-border-bottom-2 pb-4">
