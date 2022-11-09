@@ -1,14 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
 
 const AddComponent = () => {
+  const nav = useNavigate();
   return(
     <div className="eh-list-component">
       <div className="eh-border-bottom-2 pb-4">
         <div className="fs-3 w-100 text-end">
-          <button className="text-primary border-0 bg-transparent"><FontAwesomeIcon icon={faXmark}/></button>
+          <button className="text-primary border-0 bg-transparent" onClick={() => {nav(`/`)}}>
+            <FontAwesomeIcon icon={faXmark}/>
+          </button>
         </div>
         <h2 className="text-dark m-0">Add a team member</h2>
         <div className="text-secondary fs-5">Set email, location and role.</div>
@@ -32,7 +36,9 @@ const AddComponent = () => {
         </div>
       </div>
       <div>
-        <button className="btn btn-primary my-4 eh-button float-end">Save</button>
+        <button className="btn btn-primary my-4 eh-button float-end" onClick={() => {nav(`/`)}}>
+          Save
+        </button>
       </div>
     </div>
   );
