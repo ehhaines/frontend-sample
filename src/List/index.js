@@ -21,7 +21,7 @@ const ListComponent = () => {
       </div>
       <ul className="list-group">
         {members.map(mem => 
-          <Member mem={mem}/>)
+          <Member key={mem.email} mem={mem}/>)
         }
       </ul>
     </div>
