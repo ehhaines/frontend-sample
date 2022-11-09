@@ -22,11 +22,11 @@ const ListComponent = () => {
         <h2 className="text-dark m-0">Team members</h2>
         <div className="text-secondary fs-5">You have {members.length} team members.</div>
       </div>
-      <ul className="list-group">
+      <div className="list-group">
         {members.map(mem => 
-          <Member key={mem.email} mem={mem}/>)
+          <Member key={mem.email} mem={mem} onClick={() => {nav(`/edit`)}}/>)
         }
-      </ul>
+      </div>
     </div>
   );
 }

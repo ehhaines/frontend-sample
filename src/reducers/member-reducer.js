@@ -6,13 +6,17 @@ const memberSlice = createSlice({
   initialState: membersArray,
   reducers: {
     addMember(state, action) {
-      console.log(state)
       state.push(action.payload);
+    },
+    deleteMember(state, action) {
+      const memberIndex = state.find(mem => mem.email !== action.payload.email);
+      state.splice(memberIndex, 1);
     }
   }
 });
 
 export const {
-  addMember
+  addMember,
+  deleteMember
 } = memberSlice.actions;
 export default memberSlice.reducer;

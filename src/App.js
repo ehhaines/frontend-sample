@@ -5,6 +5,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import memberReducer from "./reducers/member-reducer";
 import AddComponent from "./Add";
 import ListComponent from "./List";
+import EditComponent from "./Edit";
 
 const store = configureStore({
   reducer: {member: memberReducer}
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route index element={<ListComponent/>}/>
             <Route path="/add" element={<AddComponent/>}/>
+            <Route path="/edit/*" element={<EditComponent/>}/>
           </Routes>
         </div>
       </BrowserRouter>
