@@ -6,7 +6,11 @@ const memberSlice = createSlice({
   initialState: membersArray,
   reducers: {
     addMember(state, action) {
-      state.push(action.payload);
+      if (!state.find(mem => mem.email === action.payload.email)) {
+        state.push(action.payload);
+      } else {
+        alert("ERROR: Members must have unique email addresses!");
+      }
     },
     deleteMember(state, action) {
       const memberIndex = state.find(mem => mem.email !== action.payload.email);
