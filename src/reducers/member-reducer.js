@@ -15,12 +15,17 @@ const memberSlice = createSlice({
     deleteMember(state, action) {
       const memberIndex = state.find(mem => mem.email !== action.payload.email);
       state.splice(memberIndex, 1);
+    },
+    updateMember(state, action) {
+      let currentMember = state.findIndex(mem => mem.email === action.payload[0].email);
+      state[currentMember] = action.payload[1]
     }
   }
 });
 
 export const {
   addMember,
-  deleteMember
+  deleteMember,
+  updateMember
 } = memberSlice.actions;
 export default memberSlice.reducer;

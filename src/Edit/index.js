@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
-import { deleteMember } from "../reducers/member-reducer";
+import { deleteMember, updateMember } from "../reducers/member-reducer";
 
 const EditComponent = () => {
 
@@ -20,6 +20,17 @@ const EditComponent = () => {
   const dispatch = useDispatch();
   const deleteCurrentMember = () => {
     dispatch(deleteMember(currentMember));
+  }
+
+  const updateCurrentMember = () => {
+    const updatedMember = {
+      firstName: fName,
+      lastName: lName,
+      phone: phoneNo,
+      email: email,
+      isAdmin: admin
+    };
+    dispatch(updateMember([currentMember, updatedMember]));
   }
 
   const nav = useNavigate();
@@ -68,6 +79,7 @@ const EditComponent = () => {
           Delete
         </button>
         <button className="btn btn-primary my-4 eh-button float-end" onClick={() => {
+          updateCurrentMember();
           nav(`/`);
           }}>
           Save
